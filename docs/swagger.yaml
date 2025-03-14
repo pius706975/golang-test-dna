@@ -1,0 +1,182 @@
+definitions:
+  db_struct.ProgrammingLanguage:
+    properties:
+      appeared:
+        type: integer
+      created:
+        items:
+          type: string
+        type: array
+      functional:
+        type: boolean
+      id:
+        type: integer
+      language:
+        type: string
+      object-oriented:
+        type: boolean
+      relation:
+        $ref: '#/definitions/db_struct.Relation'
+    type: object
+  db_struct.Relation:
+    properties:
+      influenced-by:
+        items:
+          type: string
+        type: array
+      influences:
+        items:
+          type: string
+        type: array
+    type: object
+info:
+  contact: {}
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: Shows welcome message to developers
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Home Endpoint
+      tags:
+      - Home
+  /language:
+    post:
+      consumes:
+      - application/json
+      description: Add a new programming language
+      parameters:
+      - description: Language Data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/db_struct.ProgrammingLanguage'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Create new language
+      tags:
+      - Languages
+  /language/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a programming language by its ID
+      parameters:
+      - description: Language ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+      summary: Delete language by ID
+      tags:
+      - Languages
+    get:
+      consumes:
+      - application/json
+      description: Fetch a programming language by its ID
+      parameters:
+      - description: Language ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+      summary: Get language by ID
+      tags:
+      - Languages
+    patch:
+      consumes:
+      - application/json
+      description: Update specific fields of a programming language by its ID
+      parameters:
+      - description: Language ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Fields to update
+        in: body
+        name: request
+        required: true
+        schema:
+          additionalProperties: true
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+      summary: Update language by ID
+      tags:
+      - Languages
+  /languages:
+    get:
+      consumes:
+      - application/json
+      description: Fetch all languages
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Internal Server Error
+      summary: Get all languages
+      tags:
+      - Languages
+  /palindrome:
+    get:
+      consumes:
+      - application/json
+      description: Check if a text is palindrome
+      parameters:
+      - description: Text to check if palindrome
+        in: query
+        name: text
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+      summary: Get palindrome
+      tags:
+      - Palindrome
+swagger: "2.0"

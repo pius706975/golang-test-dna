@@ -1,0 +1,39 @@
+[
+  {
+    "language": "Go",
+    "appeared": 2009,
+    "created": ["Robert Griesemer", "Rob Pike", "Ken Thompson"],
+    "functional": true,
+    "object-oriented": false,
+    "relation": {
+      "influenced-by": ["C", "Python", "Pascal", "Smalltalk", "Modula"],
+      "influences": ["Odin", "Crystal", "Zig"]
+    }
+  },
+  {
+    "language": "Python",
+    "appeared": 1991,
+    "created": ["Guido van Rossum"],
+    "functional": true,
+    "object-oriented": true,
+    "relation": {
+      "influenced-by": [
+        "C",
+        "C++",
+        "ALGOL 68",
+        "Ada",
+        "Haskell",
+        "Java",
+        "Lisp"
+      ],
+      "influences": [
+        "Go",
+        "CoffeeScript",
+        "JavaScript",
+        "Julia",
+        "Ruby",
+        "Swift"
+      ]
+    }
+  }
+]
